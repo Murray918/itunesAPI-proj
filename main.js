@@ -16,15 +16,36 @@ fetch('https://itunes.apple.com/search?term=migos')
       if (response.status != 200) {
         console.log('Looks like there was a problem. Status Code:' + response.status);
     }
-
+    //
     response.json().then(function(data) {
       console.log(data)
-      let results = data;
+      let results = data.results;
+      let place = document.querySelector('.results')
       let myResults = [];
-      let show =``;
+
+    //
+        results.forEach(function(dat){
+          let show =`
+          <div class="result">
+            <div class="albumArt"><img src="${dat.artworkUrl100}" alt=""></div>
+            <div class="artistInfo">
+              <ul>
+                <li>${dat.trackName}</li>
+                <li>${dat.artistName}</li>
+                <li>${dat.collectionName}</li>
+                <li>${dat.primaryGenreName}</li>
+              </ul>
+            </div>
+          </div>`;
+          $('.results').append(show)
+
+
+        })
+
+
+
 
     }
   )
 
-  }
-)
+})
