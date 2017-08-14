@@ -15,25 +15,26 @@ fetch('https://itunes.apple.com/search?term=migos')
     function(response) {
       if (response.status != 200) {
         console.log('Looks like there was a problem. Status Code:' + response.status);
-    }
-    //
-    response.json().then(function(data) {
-      console.log(data)
-      let results = data.results;
-      let place = document.querySelector('.results')
-      let myResults = [];
+      }
+      //
+      response.json().then(function(data) {
+        console.log(data)
+        let results = data.results;
+        let place = document.querySelector('.results')
+        let myResults = [];
 
-    //
-        results.forEach(function(dat){
-          let show =`
-          <div class="result">
-            <div class="albumArt"><img src="${dat.artworkUrl100}" alt=""></div>
-            <div class="artistInfo">
+        //
+        results.forEach(function(dat) {
+          let show = `
+          <div class="result col s6 row">
+            <div class="albumArt responsive-img col s2s"><img src="${dat.artworkUrl100}" alt=""></div>
+            <div class="artistInfo col s2s">
               <ul>
                 <li>${dat.trackName}</li>
                 <li>${dat.artistName}</li>
                 <li>${dat.collectionName}</li>
                 <li>${dat.primaryGenreName}</li>
+
               </ul>
             </div>
           </div>`;
@@ -45,7 +46,6 @@ fetch('https://itunes.apple.com/search?term=migos')
 
 
 
-    }
-  )
+      })
 
-})
+    })
