@@ -1,32 +1,46 @@
 body {
-  background-color: #white;
-  color: dimgray;
+  background-color: white;
 }
+
+#p {
+  color: #336CCF;
+}
+
 h1 {
-  color: #EA4335;
+  color: #F36663;
 }
+
+span {
+  color: #D03A39;
+}
+
 hr {
   display: block;
-    height: 3px;
-    border: 0;
-    border-top: 3px solid #FBBC05;
-    margin: 1.5em 0;
-    padding: 0;
-  : #FBBC05;
+  height: 3px;
+  border: 0;
+  border-top: 3px solid #8FDEFF;
+  margin: 1.5em 0;
+  padding: 0;
+  : #8FDEFF;
   height: 3px;
 }
-audio {
-  color: #4285F4;
+
+audio {}
+
+#search {
+  color: #336CCF;
 }
-input {
-  color: #4285F4;
-}
+
 img {
   width: 100%;
 }
+
 form {
+  color: #82CDF7;
   font-size: 5em;
   width: 33%;
 }
-results {
+
+.results {
+  color: #336CCF;
 }

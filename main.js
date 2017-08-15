@@ -1,31 +1,30 @@
-/*
-  Here is a rough idea for the steps you could take:
-*/
+let form = document.querySelector('.search-form')
+let player = document.querySelector('.music-player')
+let input = document.getElementById('search')
+let show = '';
 
-// 1. First select and store the elements you'll be working with
-// 2. Create your `submit` event for getting the user's search term
-// 3. Create your `fetch` request that is called after a submission
-// 4. Create a way to append the fetch results to your page
-// 5. Create a way to listen for a click that will play the song in the audio play
+form.addEventListener('submit', event => {
+  $('.results').empty()
+  event.preventDefault();
+  fetchFuncttion();
+})
 
+function fetchFuncttion() {
+  fetch('https://itunes.apple.com/search?term=' + input.value);
+    .then(
+      function(response) {
+        if (response.status != 200) {
+          console.log('Looks like there was a problem. Status Code:' + response.status);
+        }
 
+        response.json().then(function(data) {
+          let results = data.results;
 
-fetch('https://itunes.apple.com/search?term=migos')
-  .then(
-    function(response) {
-      if (response.status != 200) {
-        console.log('Looks like there was a problem. Status Code:' + response.status);
-      }
-      //
-      response.json().then(function(data) {
-        console.log(data)
-        let results = data.results;
-        let place = document.querySelector('.results')
-        let myResults = [];
+          results.forEach(function(dat) {
+            let div = document.createElement('div');
+            let searchResults = document.querySelector('.results');
 
-        //
-        results.forEach(function(dat) {
-          let show = `
+            show = `
           <div class="result col s6 row">
             <div class="albumArt responsive-img col s2s"><img src="${dat.artworkUrl100}" alt=""></div>
             <div class="artistInfo col s2s">
@@ -34,18 +33,17 @@ fetch('https://itunes.apple.com/search?term=migos')
                 <li>${dat.artistName}</li>
                 <li>${dat.collectionName}</li>
                 <li>${dat.primaryGenreName}</li>
-
               </ul>
             </div>
           </div>`;
-          $('.results').append(show)
 
+            searchResults.addEventListener('click', event => {
+              $('.results').append(div);
+              player.src = dat.previewUrl
+            })
 
+            $('.results').append(show);
+          })
         })
-
-
-
-
       })
-
-    })
+}
