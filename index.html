@@ -9,15 +9,33 @@
 </head>
 
 <body>
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <h1 href="#" class="brand-logo">Music Player</h1>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+          <li><a href="collapsible.html">JavaScript</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
   <div class="container">
-    <header>
-      <h1><span>M</span>usic <span id='p'>P</span>review</h1>
-    </header>
-    <section class="player">
-      <audio class="music-player" controls="controls" src=""></audio>
-    </section>
+
+
+    <div id='' class="audio row s5">
+      <!-- <section class="player"> -->
+        <img id="playerArt" class="row s1 z-depth-5" src=""
+         alt="image">
+         <div class="row s4">
+        <audio class="music-player col s5" controls="controls" src=""></audio>
+        <div class="col s5"><h6>Now Playing</h6></div>
+      </div>
+      <!-- </section> -->
+    </div>
     <hr>
-    <section class="search">
+    <section class="searcsxh">
       <form class="search-form">
         <input id='search' type="text" name="artist" placeholder="Search Artist Here">
       </form>

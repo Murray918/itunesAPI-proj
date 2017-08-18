@@ -1,5 +1,7 @@
 
 let form = document.querySelector('.search-form')
+let audioImg = document.querySelector('#playerArt')
+let audio = document.querySelector('.audio')
 let player = document.querySelector('.music-player')
 let input = document.getElementById('search')
 const searchResults = document.querySelector('.results')
@@ -25,7 +27,7 @@ function fetchFuncttion() {
             div.classList.add('result')
             let show = `
           <div class=" col s6 row">
-            <div class="albumArt responsive-img col s2s"><img src="${dat.artworkUrl100}" alt=""></div>
+            <div class="materialboxed col s2s "><img class ='art z-depth-5' src="${dat.artworkUrl100}" alt="image"></div>
             <div class="artistInfo col s2s">
               <ul>
                 <li>${dat.trackName}</li>
@@ -38,11 +40,15 @@ function fetchFuncttion() {
           // div.innnerHTML = show
           searchResults.appendChild(div)
           div.addEventListener('click', ()=> {
-          //
+
             // event.title = dat.previewUrl
             // $('.results').append(div);
           //   // console.log(event);
-            player.src = dat.previewUrl
+            player.src = dat.previewUrl;
+            audioImg.src = dat.artworkUrl100;
+            audio.className = '#audioShow'
+
+
           //   console.log(dat.previewUrl);
           })
             $(div).append(show);

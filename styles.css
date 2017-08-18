@@ -1,5 +1,6 @@
 body {
   background-color: white;
+  color: #336CCF;
 }
 
 #p {
@@ -14,6 +15,10 @@ span {
   color: #D03A39;
 }
 
+header {
+  margin-bottom: 6em;
+}
+
 hr {
   display: block;
   height: 3px;
@@ -24,14 +29,28 @@ hr {
   : #8FDEFF;
   height: 3px;
 }
+#palayerArt {
+  padding: 0;
+  margin: 0;
+}
 
-audio {}
+.audio {
+  display: none;
+}
+
+#audioShow {
+  margin-top: 5em;
+  height: 5em;
+  margin-left: 0;
+  padding-left: 0
+  color: #336CCF;
+}
 
 #search {
   color: #336CCF;
 }
 
-img {
+.art {
   width: 100%;
 }
 
