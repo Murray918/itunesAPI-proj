@@ -1,31 +1,30 @@
+
 let form = document.querySelector('.search-form')
 let player = document.querySelector('.music-player')
 let input = document.getElementById('search')
-let show = '';
-
+const searchResults = document.querySelector('.results')
 form.addEventListener('submit', event => {
   $('.results').empty()
   event.preventDefault();
   fetchFuncttion();
 })
-
 function fetchFuncttion() {
-  fetch('https://itunes.apple.com/search?term=' + input.value);
+  fetch('https://itunes.apple.com/search?term=' + input.value)
     .then(
       function(response) {
         if (response.status != 200) {
           console.log('Looks like there was a problem. Status Code:' + response.status);
         }
-
         response.json().then(function(data) {
           let results = data.results;
+          // results.innnerHTML = ''
+          console.log(results);
 
           results.forEach(function(dat) {
-            let div = document.createElement('div');
-            let searchResults = document.querySelector('.results');
-
-            show = `
-          <div class="result col s6 row">
+            let div = document.createElement('div')
+            div.classList.add('result')
+            let show = `
+          <div class=" col s6 row">
             <div class="albumArt responsive-img col s2s"><img src="${dat.artworkUrl100}" alt=""></div>
             <div class="artistInfo col s2s">
               <ul>
@@ -36,13 +35,18 @@ function fetchFuncttion() {
               </ul>
             </div>
           </div>`;
+          // div.innnerHTML = show
+          searchResults.appendChild(div)
+          div.addEventListener('click', ()=> {
+          //
+            // event.title = dat.previewUrl
+            // $('.results').append(div);
+          //   // console.log(event);
+            player.src = dat.previewUrl
+          //   console.log(dat.previewUrl);
+          })
+            $(div).append(show);
 
-            searchResults.addEventListener('click', event => {
-              $('.results').append(div);
-              player.src = dat.previewUrl
-            })
-
-            $('.results').append(show);
           })
         })
       })
