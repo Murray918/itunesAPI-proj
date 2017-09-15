@@ -1,4 +1,3 @@
-
 let form = document.querySelector('.search-form')
 let audioImg = document.querySelector('#playerArt')
 let audio = document.querySelector('.audio')
@@ -19,7 +18,6 @@ function fetchFuncttion() {
         }
         response.json().then(function(data) {
           let results = data.results;
-          // results.innnerHTML = ''
           console.log(results);
 
           results.forEach(function(dat) {
@@ -27,7 +25,7 @@ function fetchFuncttion() {
             div.classList.add('result')
             let show = `
           <div class=" col s6 row">
-            <div class="materialboxed col s2s "><img class ='art z-depth-5' src="${dat.artworkUrl100}" alt="image"></div>
+            <div class="materialboxed col s2s "><img class ='art z-depth-5' src="${dat.artworkUrl100}" title = "${dat.previewUrl}" alt="image"></div>
             <div class="artistInfo col s2s">
               <ul>
                 <li>${dat.trackName}</li>
@@ -37,19 +35,14 @@ function fetchFuncttion() {
               </ul>
             </div>
           </div>`;
-          // div.innnerHTML = show
           searchResults.appendChild(div)
-          div.addEventListener('click', ()=> {
-
-            // event.title = dat.previewUrl
-            // $('.results').append(div);
-          //   // console.log(event);
-            player.src = dat.previewUrl;
-            audioImg.src = dat.artworkUrl100;
+          searchResults.addEventListener('click', (e)=> {
+            e.preventDefault();
+            console.log('event is ' + e.target.title);
+            player.src = e.target.title;
+            audioImg.src = e.target.src;
             audio.className = '#audioShow'
 
-
-          //   console.log(dat.previewUrl);
           })
             $(div).append(show);
 
